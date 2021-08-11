@@ -11,35 +11,163 @@
 
 {% block content %}
     <h1 class="heading">Personal and consumption details</h1>
-    <div class="table">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
+    {% if sheet_names %}
+    <div class="btn-group w-100" role="group" aria-label="Basic outlined example">
+        {% for name in sheet_names %}
+        <button type="button" class="btn btn-outline-primary">{{ name }}</button>
+        {% endfor %}
     </div>
+    <div id="sheet-one">
+        <h2>{{ sheet_name1 }}</h2>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for head in headings1 %}
+                            {% if head is  None %}
+                            <th scope="col"></th>
+                            {% else %}
+                            <th scope="col">{{ head }}</th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for data in first_row1 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for data in second_row1 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="sheet-two">
+        <h2 class="customer-number">{{ sheet_name2 }}</h2>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for head in headings2 %}
+                            {% if head is  None %}
+                            <th scope="col"></th>
+                            {% else %}
+                            <th scope="col">{{ head }}</th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for data in first_row2 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for data in second_row2 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="sheet-three">
+        <h2 class="customer-number">{{ sheet_name3 }}</h2>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for head in headings3 %}
+                            {% if head is  None %}
+                            <th scope="col"></th>
+                            {% else %}
+                            <th scope="col">{{ head }}</th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for data in first_row3 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for data in second_row3 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="sheet-four">
+        <h2 class="customer-number">{{ sheet_name4 }}</h2>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for head in headings4 %}
+                            {% if head is  None %}
+                            <th scope="col"></th>
+                            {% else %}
+                            <th scope="col">{{ head }}</th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for data in first_row4 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for data in second_row4 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
 {% endblock %}

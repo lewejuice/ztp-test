@@ -18,7 +18,7 @@
         {% endfor %}
     </div>
     <!-----------------Customer 1--------------------->
-    <div id="sheet-one">
+    <div id="sheet-one" class="table-container">
         <h2>{{ sheet_name1 }}</h2>
         <div class="table">
             <table class="table table-bordered">
@@ -59,7 +59,7 @@
         </div>
     </div>
     <!-----------------Customer 2--------------------->
-    <div id="sheet-two">
+    <div id="sheet-two" class="table-container">
         <h2 class="customer-number">{{ sheet_name2 }}</h2>
         <div class="table">
             <table class="table table-bordered">
@@ -100,7 +100,7 @@
         </div>
     </div>
     <!-----------------Customer 3--------------------->
-    <div id="sheet-three">
+    <div id="sheet-three" class="table-container">
         <h2 class="customer-number">{{ sheet_name3 }}</h2>
         <div class="table">
             <table class="table table-bordered">
@@ -141,7 +141,7 @@
         </div>
     </div>
     <!-----------------Customer 4--------------------->
-    <div id="sheet-four">
+    <div id="sheet-four" class="table-container">
         <h2 class="customer-number">{{ sheet_name4 }}</h2>
         <div class="table">
             <table class="table table-bordered">
@@ -182,4 +182,137 @@
         </div>
     </div>
     {% endif %}
+    <!-------------------Highest day rate--------------------->
+    <div id="highest-day-rate" class="">
+        <h2 class="customer-number">Highest Day Rate: {{ highest_day_customer }}</h2>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for head in highest_day_headings %}
+                            {% if head is  None %}
+                            <th scope="col"></th>
+                            {% else %}
+                            <th scope="col">{{ head }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        <th scope="col">Total energy cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for data in highest_day_row1 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ highest_day_energy }}</td>
+                    </tr>
+                    <tr>
+                        {% for data in highest_day_row2 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-------------------Highest day rate--------------------->
+    <div id="highest-night-rate" class="">
+        <h2 class="customer-number">Highest Night Rate: {{ highest_night_customer }}</h2>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for head in highest_night_headings %}
+                            {% if head is  None %}
+                            <th scope="col"></th>
+                            {% else %}
+                            <th scope="col">{{ head }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        <th scope="col">Total energy cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for data in highest_night_row1 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ highest_night_energy }}</td>
+                    </tr>
+                    <tr>
+                        {% for data in highest_night_row2 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-------------------Highest energy cost--------------------->
+    <div id="highest-energy-cost" class="">
+        <h2 class="customer-number">Highest Energy Cost: {{ highest_energy_customer }}</h2>
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for head in highest_energy_headings %}
+                            {% if head is  None %}
+                            <th scope="col"></th>
+                            {% else %}
+                            <th scope="col">{{ head }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        <th scope="col">Total energy cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for data in highest_energy_row1 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ highest_energy }}</td>
+                    </tr>
+                    <tr>
+                        {% for data in highest_energy_row2 %}
+                            {% if data is None %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ data }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Highest..
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Day Rate</a></li>
+          <li><a class="dropdown-item" href="#">Night Rate</a></li>
+          <li><a class="dropdown-item" href="#">Energy Consuption</a></li>
+        </ul>
+      </div>
 {% endblock %}

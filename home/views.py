@@ -168,6 +168,97 @@ def index(request):
     c4_rate2_consupt = round(c4_energyconsupt2 * rate2)
     total_energy_cost4 = c4_rate1_consupt + c4_rate2_consupt
 
+    """ Highest day rate consumption """
+
+    if c1_energyconsupt1 > max(c2_energyconsupt1, c3_energyconsupt1, c4_energyconsupt1):
+        highest_day_customer = sheet_name1
+        highest_day_headings = headings1
+        highest_day_row1 = first_row1
+        highest_day_row2 = second_row1
+        highest_day_energy = total_energy_cost1
+    elif c2_energyconsupt1 > max(c1_energyconsupt1, c3_energyconsupt1, c4_energyconsupt1):
+        highest_day_customer = sheet_name2
+        highest_day_headings = headings2
+        highest_day_row1 = first_row2
+        highest_day_row2 = second_row2
+        highest_day_energy = total_energy_cost2
+    elif c3_energyconsupt1 > max(c1_energyconsupt1, c2_energyconsupt1,
+                                 c4_energyconsupt1):
+        highest_day_customer = sheet_name3
+        highest_day_headings = headings3
+        highest_day_row1 = first_row3
+        highest_day_row2 = second_row3
+        highest_day_energy = total_energy_cost3
+    elif c4_energyconsupt1 > max(c1_energyconsupt1, c2_energyconsupt1,
+                                 c3_energyconsupt1):
+        highest_day_customer = sheet_name4
+        highest_day_headings = headings4
+        highest_day_row1 = first_row4
+        highest_day_row2 = second_row4
+        highest_day_energy = total_energy_cost4
+
+    """ Highest night rate consumption """
+
+    if c1_energyconsupt2 > max(c2_energyconsupt2, c3_energyconsupt2,
+                               c4_energyconsupt2):
+        highest_night_customer = sheet_name1
+        highest_night_headings = headings1
+        highest_night_row1 = first_row1
+        highest_night_row2 = second_row1
+        highest_night_energy = total_energy_cost1
+    elif c2_energyconsupt2 > max(c1_energyconsupt2, c3_energyconsupt2,
+                                 c4_energyconsupt2):
+        highest_night_customer = sheet_name2
+        highest_night_headings = headings2
+        highest_night_row1 = first_row2
+        highest_night_row2 = second_row2
+        highest_night_energy = total_energy_cost2
+    elif c3_energyconsupt2 > max(c1_energyconsupt2, c2_energyconsupt2,
+                                 c4_energyconsupt1):
+        highest_night_customer = sheet_name3
+        highest_night_headings = headings3
+        highest_night_row1 = first_row3
+        highest_night_row2 = second_row3
+        highest_night_energy = total_energy_cost3
+    elif c4_energyconsupt2 > max(c1_energyconsupt2, c2_energyconsupt2,
+                                 c3_energyconsupt2):
+        highest_night_customer = sheet_name4
+        highest_night_headings = headings4
+        highest_night_row1 = first_row4
+        highest_night_row2 = second_row4
+        highest_night_energy = total_energy_cost4
+
+    """ Highest total energy cost """
+
+    if total_energy_cost1 > max(total_energy_cost2, total_energy_cost3,
+                                total_energy_cost4):
+        highest_energy_customer = sheet_name1
+        highest_energy_headings = headings1
+        highest_energy_row1 = first_row1
+        highest_energy_row2 = second_row1
+        highest_energy = total_energy_cost1
+    elif total_energy_cost2 > max(total_energy_cost1, total_energy_cost3,
+                                  total_energy_cost4):
+        highest_energy_customer = sheet_name2
+        highest_energy_headings = headings2
+        highest_energy_row1 = first_row2
+        highest_energy_row2 = second_row2
+        highest_energy = total_energy_cost2
+    elif total_energy_cost3 > max(total_energy_cost1, total_energy_cost2,
+                                  total_energy_cost4):
+        highest_energy_customer = sheet_name3
+        highest_energy_headings = headings3
+        highest_energy_row1 = first_row3
+        highest_energy_row2 = second_row3
+        highest_energy = total_energy_cost3
+    elif total_energy_cost4 > max(total_energy_cost1, total_energy_cost2,
+                                  total_energy_cost3):
+        highest_energy_customer = sheet_name4
+        highest_energy_headings = headings4
+        highest_energy_row1 = first_row4
+        highest_energy_row2 = second_row4
+        highest_energy = total_energy_cost4
+
     context = {
         'sheet_names': sheet_names,
         'sheet_name1': sheet_name1,
@@ -190,6 +281,21 @@ def index(request):
         'total_energy_cost2': total_energy_cost2,
         'total_energy_cost3': total_energy_cost3,
         'total_energy_cost4': total_energy_cost4,
+        'highest_day_customer': highest_day_customer,
+        'highest_day_headings': highest_day_headings,
+        'highest_day_row1': highest_day_row1,
+        'highest_day_row2': highest_day_row2,
+        'highest_day_energy': highest_day_energy,
+        'highest_night_customer': highest_night_customer,
+        'highest_night_headings': highest_night_headings,
+        'highest_night_row1': highest_night_row1,
+        'highest_night_row2': highest_night_row2,
+        'highest_night_energy': highest_night_energy,
+        'highest_energy_customer': highest_energy_customer,
+        'highest_energy_headings': highest_energy_headings,
+        'highest_energy_row1': highest_energy_row1,
+        'highest_energy_row2': highest_energy_row2,
+        'highest_energy': highest_energy,
     }
 
     return render(request, 'home/index.html', context)

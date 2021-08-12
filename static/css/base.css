@@ -11,3 +11,11 @@
 .table {
     padding: 2rem;
 }
+
+#sheet-one {
+    display: block;
+}
+
+.table-container {
+    display: none;
+}

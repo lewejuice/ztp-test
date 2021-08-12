@@ -12,22 +12,30 @@ const custBtn4 = document.getElementById('cust-btn-4');
 $(custBtn1).click(function() {
     $(custOne).css('display', 'block');
     $(custTwo,custThree,custFour).css('display', 'none');
+    $(custThree).css('display', 'none');
+    $(custFour).css('display', 'none');
 });
 
 // Customer Two button
 $(custBtn2).click(function() {
     $(custTwo).css('display', 'block');
-    $(custOne,custThree,custFour).css('display', 'none');
+    $(custOne).css('display', 'none');
+    $(custThree).css('display', 'none');
+    $(custFour).css('display', 'none');
 });
 
 // Customer Three button
 $(custBtn3).click(function() {
     $(custThree).css('display', 'block');
-    $(custOne,custTwo,custFour).css('display', 'none');
+    $(custOne).css('display', 'none');
+    $(custTwo).css('display', 'none');
+    $(custFour).css('display', 'none');
 });
 
 // Customer Four button
 $(custBtn4).click(function() {
     $(custFour).css('display', 'block');
-    $(custTwo,custThree,custOne).css('display', 'none');
+    $(custOne).css('display', 'none');
+    $(custTwo).css('display', 'none');
+    $(custThree).css('display', 'none');
 });

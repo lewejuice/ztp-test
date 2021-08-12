@@ -10,16 +10,27 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="heading">Personal and consumption details</h1>
+    <h1 class="heading">Personal and Consumption Details</h1>
     {% if sheet_names %}
-    <div class="btn-group w-100" role="group" aria-label="Basic outlined example">
+    <div class="btn-group w-100 customer-options" role="group" aria-label="Basic outlined example">
         {% for name in sheet_names %}
         <button type="button" id="cust-btn-{{ forloop.counter }}" class="btn btn-outline-primary">{{ name }}</button>
         {% endfor %}
     </div>
+    <!----------------Dropdown buttons to find highest customer----------------->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle highest-dropdown" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            Find Highest...
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button id="high-day-btn" class="dropdown-item" type="button">Day Rate</button></li>
+            <li><button id="high-night-btn" class="dropdown-item" type="button">Night Rate</button></li>
+            <li><button id="high-energy-cost-btn" class="dropdown-item" type="button">Energy Consuption</button></li>
+        </ul>
+    </div>
     <!-----------------Customer 1--------------------->
     <div id="sheet-one" class="table-container">
-        <h2>{{ sheet_name1 }}</h2>
+        <h2 class="customer-number">{{ sheet_name1 }}</h2>
         <div class="table">
             <table class="table table-bordered">
                 <thead>
@@ -183,7 +194,7 @@
     </div>
     {% endif %}
     <!-------------------Highest day rate--------------------->
-    <div id="highest-day-rate" class="">
+    <div id="highest-day-rate" class="table-container">
         <h2 class="customer-number">Highest Day Rate: {{ highest_day_customer }}</h2>
         <div class="table">
             <table class="table table-bordered">
@@ -224,7 +235,7 @@
         </div>
     </div>
     <!-------------------Highest day rate--------------------->
-    <div id="highest-night-rate" class="">
+    <div id="highest-night-rate" class="table-container">
         <h2 class="customer-number">Highest Night Rate: {{ highest_night_customer }}</h2>
         <div class="table">
             <table class="table table-bordered">
@@ -265,7 +276,7 @@
         </div>
     </div>
     <!-------------------Highest energy cost--------------------->
-    <div id="highest-energy-cost" class="">
+    <div id="highest-energy-cost" class="table-container">
         <h2 class="customer-number">Highest Energy Cost: {{ highest_energy_customer }}</h2>
         <div class="table">
             <table class="table table-bordered">
@@ -305,14 +316,4 @@
             </table>
         </div>
     </div>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Highest..
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Day Rate</a></li>
-          <li><a class="dropdown-item" href="#">Night Rate</a></li>
-          <li><a class="dropdown-item" href="#">Energy Consuption</a></li>
-        </ul>
-      </div>
 {% endblock %}

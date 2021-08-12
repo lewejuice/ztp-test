@@ -16,6 +16,20 @@
     display: block;
 }
 
+.customer-options {
+    padding: 2rem 2rem 0;
+}
+
 .table-container {
     display: none;
+}
+
+.highest-dropdown {
+    float: right;
+    margin: 2rem;
+    font-size: 1.2rem;
+}
+
+.customer-number {
+    padding: 2rem 2rem 0;
 }

@@ -14,9 +14,10 @@
     {% if sheet_names %}
     <div class="btn-group w-100" role="group" aria-label="Basic outlined example">
         {% for name in sheet_names %}
-        <button type="button" class="btn btn-outline-primary">{{ name }}</button>
+        <button type="button" id="cust-btn-{{ forloop.counter }}" class="btn btn-outline-primary">{{ name }}</button>
         {% endfor %}
     </div>
+    <!-----------------Customer 1--------------------->
     <div id="sheet-one">
         <h2>{{ sheet_name1 }}</h2>
         <div class="table">
@@ -30,6 +31,7 @@
                             <th scope="col">{{ head }}</th>
                             {% endif %}
                         {% endfor %}
+                        <th scope="col">Total energy cost</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +43,7 @@
                             <td>{{ data }}</td>
                             {% endif %}
                         {% endfor %}
+                        <td>{{ total_energy_cost1 }}</td>
                     </tr>
                     <tr>
                         {% for data in second_row1 %}
@@ -55,6 +58,7 @@
             </table>
         </div>
     </div>
+    <!-----------------Customer 2--------------------->
     <div id="sheet-two">
         <h2 class="customer-number">{{ sheet_name2 }}</h2>
         <div class="table">
@@ -68,6 +72,7 @@
                             <th scope="col">{{ head }}</th>
                             {% endif %}
                         {% endfor %}
+                        <th scope="col">Total energy cost</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,6 +84,7 @@
                             <td>{{ data }}</td>
                             {% endif %}
                         {% endfor %}
+                        <td>{{ total_energy_cost2 }}</td>
                     </tr>
                     <tr>
                         {% for data in second_row2 %}
@@ -93,6 +99,7 @@
             </table>
         </div>
     </div>
+    <!-----------------Customer 3--------------------->
     <div id="sheet-three">
         <h2 class="customer-number">{{ sheet_name3 }}</h2>
         <div class="table">
@@ -106,6 +113,7 @@
                             <th scope="col">{{ head }}</th>
                             {% endif %}
                         {% endfor %}
+                        <th scope="col">Total energy cost</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,6 +125,7 @@
                             <td>{{ data }}</td>
                             {% endif %}
                         {% endfor %}
+                        <td>{{ total_energy_cost3 }}</td>
                     </tr>
                     <tr>
                         {% for data in second_row3 %}
@@ -131,6 +140,7 @@
             </table>
         </div>
     </div>
+    <!-----------------Customer 4--------------------->
     <div id="sheet-four">
         <h2 class="customer-number">{{ sheet_name4 }}</h2>
         <div class="table">
@@ -144,6 +154,7 @@
                             <th scope="col">{{ head }}</th>
                             {% endif %}
                         {% endfor %}
+                        <th scope="col">Total energy cost</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -155,6 +166,7 @@
                             <td>{{ data }}</td>
                             {% endif %}
                         {% endfor %}
+                        <td>{{ total_energy_cost4 }}</td>
                     </tr>
                     <tr>
                         {% for data in second_row4 %}

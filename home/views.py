@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-import openpyxl
 from openpyxl import load_workbook
 from django.shortcuts import render
 
@@ -12,6 +9,12 @@ def index(request):
 
     workbook = load_workbook('excel-files/EnergyConsumptionDetail_updated.xlsx')
     sheet_names = workbook.sheetnames[0:4]
+
+    """ Rate detail """
+    example_sheet = workbook["Example"]
+    rate1 = example_sheet['G6'].value
+    rate2 = example_sheet['G7'].value
+    rate3 = example_sheet['G8'].value
 
     """ Customer 1 """
     sheet1 = workbook["Customer 1"]
@@ -37,6 +40,17 @@ def index(request):
                                   values_only=True):
         second_row1 = value
     
+    """ Total energy cost for customer 1"""
+
+    c1_day_rate1 = sheet1['B6'].value
+    c1_day_rate2 = sheet1['C6'].value
+    c1_night_rate1 = sheet1['B7'].value
+    c1_night_rate2 = sheet1['C7'].value
+    c1_energyconsupt1 = abs(c1_day_rate1 - c1_day_rate2)
+    c1_energyconsupt2 = abs(c1_night_rate1 - c1_night_rate2)
+    c1_rate1_consupt = round(c1_energyconsupt1 * rate1)
+    c1_rate2_consupt = round(c1_energyconsupt2 * rate2)
+    total_energy_cost1 = c1_rate1_consupt + c1_rate2_consupt
 
     """ Customer 2 """
     sheet2 = workbook["Customer 2"]
@@ -61,6 +75,22 @@ def index(request):
                                   max_col=3,
                                   values_only=True):
         second_row2 = value
+    
+    """ Total energy cost for customer 2"""
+
+    c2_day_rate1 = sheet2['B6'].value
+    c2_day_rate2 = sheet2['C6'].value
+    c2_night_rate1 = sheet2['B7'].value
+    c2_night_rate2 = sheet2['C7'].value
+    c2_weekend_rate1 = sheet2['B8'].value
+    c2_weekend_rate2 = sheet2['C8'].value
+    c2_energyconsupt1 = abs(c2_day_rate1 - c2_day_rate2)
+    c2_energyconsupt2 = abs(c2_night_rate1 - c2_night_rate2)
+    c2_energyconsupt3 = abs(c2_weekend_rate1 - c2_weekend_rate2)
+    c2_rate1_consupt = round(c2_energyconsupt1 * rate1)
+    c2_rate2_consupt = round(c2_energyconsupt2 * rate2)
+    c2_rate3_consupt = round(c2_energyconsupt3 * rate3)
+    total_energy_cost2 = c2_rate1_consupt + c2_rate2_consupt + c2_rate3_consupt
 
     """ Customer 3 """
     sheet3 = workbook["Customer 3"]
@@ -86,6 +116,22 @@ def index(request):
                                   values_only=True):
         second_row3 = value
 
+    """ Total energy cost for customer 3"""
+
+    c3_day_rate1 = sheet3['B6'].value
+    c3_day_rate2 = sheet3['C6'].value
+    c3_night_rate1 = sheet3['B7'].value
+    c3_night_rate2 = sheet3['C7'].value
+    c3_weekend_rate1 = sheet3['B8'].value
+    c3_weekend_rate2 = sheet3['C8'].value
+    c3_energyconsupt1 = abs(c3_day_rate1 - c3_day_rate2)
+    c3_energyconsupt2 = abs(c3_night_rate1 - c3_night_rate2)
+    c3_energyconsupt3 = abs(c3_weekend_rate1 - c3_weekend_rate2)
+    c3_rate1_consupt = round(c3_energyconsupt1 * rate1)
+    c3_rate2_consupt = round(c3_energyconsupt2 * rate2)
+    c3_rate3_consupt = round(c3_energyconsupt3 * rate3)
+    total_energy_cost3 = c3_rate1_consupt + c3_rate2_consupt + c3_rate3_consupt
+
     """ Customer 4 """
     sheet4 = workbook["Customer 4"]
     sheet_name4 = workbook.sheetnames[3]
@@ -110,6 +156,18 @@ def index(request):
                                   values_only=True):
         second_row4 = value
 
+    """ Total energy cost for customer 4"""
+
+    c4_day_rate1 = sheet4['B6'].value
+    c4_day_rate2 = sheet4['C6'].value
+    c4_weekend_rate1 = sheet4['B7'].value
+    c4_weekend_rate2 = sheet4['C7'].value
+    c4_energyconsupt1 = abs(c4_day_rate1 - c4_day_rate2)
+    c4_energyconsupt2 = abs(c4_weekend_rate1 - c4_weekend_rate2)
+    c4_rate1_consupt = round(c4_energyconsupt1 * rate1)
+    c4_rate2_consupt = round(c4_energyconsupt2 * rate2)
+    total_energy_cost4 = c4_rate1_consupt + c4_rate2_consupt
+
     context = {
         'sheet_names': sheet_names,
         'sheet_name1': sheet_name1,
@@ -128,6 +186,10 @@ def index(request):
         'headings4': headings4,
         'first_row4': first_row4,
         'second_row4': second_row4,
+        'total_energy_cost1': total_energy_cost1,
+        'total_energy_cost2': total_energy_cost2,
+        'total_energy_cost3': total_energy_cost3,
+        'total_energy_cost4': total_energy_cost4,
     }
 
     return render(request, 'home/index.html', context)

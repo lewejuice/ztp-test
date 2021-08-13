@@ -7,7 +7,7 @@ from django.shortcuts import render
 def index(request):
     """ A view to navigate to the index page """
 
-    workbook = load_workbook('excel-files/EnergyConsumptionDetail_updated.xlsx')
+    workbook = load_workbook('static/excel-files/EnergyConsumptionDetail_updated.xlsx')
     sheet_names = workbook.sheetnames[0:4]
 
     """ Rate detail """

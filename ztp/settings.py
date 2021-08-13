@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-z8-valsh=glao60a!m)d&ln5_@)iycdc+vlb095m+e^avg*j@5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['https://ztp-test.herokuapp.com/', 'localhost']
+ALLOWED_HOSTS = ['ztp-test.herokuapp.com', 'localhost']
 
 
 # Application definition
